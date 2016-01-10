@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ani_logo"
+            android:layout_centerHorizontal="true"
+            />
+
+        <TextView
+            android:id="@+id/splash_caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/ani_logo"
+            android:textSize="42sp"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="0dp"
+            android:text="D A N C E R"
+            android:textStyle="bold"
+            android:textColor="#6200ea"
+            android:includeFontPadding="false"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:includeFontPadding="false"
+            android:id="@+id/splash_subcaption"
+            android:layout_alignRight="@id/splash_caption"
+            android:layout_below="@id/splash_caption"
+            android:text="demo app"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="github.com/andrey-shikhov/wlog"
+            android:autoLink="web"
+            android:textColor="#5c6bc0"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="START!"
+            android:id="@+id/splash_start"
+            android:layout_below="@id/splash_subcaption"
+            android:layout_centerHorizontal="true"
+            />
+
+</RelativeLayout>
