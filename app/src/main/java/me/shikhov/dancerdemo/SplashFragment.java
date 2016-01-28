@@ -49,7 +49,12 @@ public class SplashFragment extends Fragment
         View caption = Util.get(view, R.id.splash_caption);
         View subCaption = Util.get(view, R.id.splash_subcaption);
 
-        Dancer.show().view(caption).from(Direction.UP).distance(Size.HEIGHT).dance();
+        Dancer.show()
+                .view(caption)
+                .from(Direction.UP)
+                .distance(Size.HEIGHT)
+                .dance().setCallback((e, result) -> result.reverse().dance());
+
         Dancer.show().view(subCaption).from(Direction.RIGHT).distance(Size.WIDTH).dance();
 
         return view;

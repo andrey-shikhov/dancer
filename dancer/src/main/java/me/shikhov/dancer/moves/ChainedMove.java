@@ -21,15 +21,14 @@ import android.support.annotation.NonNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChainedMove extends Move
+public class ChainedMove extends AbstractMove<ChainedMove>
 {
     class MoveChain
     {
         long duration;
 
         @NonNull
-        private final List<Move> moves = new ArrayList<>();
-        
+        private final List<AbstractMove> moves = new ArrayList<>();
     }
 
 
@@ -40,19 +39,19 @@ public class ChainedMove extends Move
         super(simulation);
     }
 
-    public ChainedMove(@NonNull Move parentMove, boolean simulation)
+    public ChainedMove(@NonNull AbstractMove parentMove, boolean simulation)
     {
         super(parentMove, simulation);
     }
 
-    @NonNull
-    public ChainedMove with(Move... moves)
+    @Override
+    protected void execute()
     {
-        return this;
+
     }
 
     @Override
-    protected void execute()
+    protected void cancel()
     {
 
     }

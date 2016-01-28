@@ -18,31 +18,91 @@ package me.shikhov.dancer;
 
 import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.annotation.UiThread;
+import android.support.v4.view.ViewCompat;
 import android.view.View;
 import android.view.ViewTreeObserver;
 
+import java.lang.ref.WeakReference;
 
-public class LayoutWaiter
+import me.shikhov.dancer.future.Cancellable;
+import me.shikhov.dancer.future.SimpleCancellable;
+
+
+@UiThread
+public class LayoutWaiter extends SimpleCancellable
+        implements ViewTreeObserver.OnGlobalLayoutListener
 {
-    public static void waitLayout(@NonNull final View view,@NonNull final Runnable onLayoutAction)
+    private final Runnable onLayoutCompleteAction;
+    private final Runnable onWaitCanceledAction;
+
+    private final WeakReference<View> anchorRef;
+
+    public LayoutWaiter(@NonNull View anchor, @NonNull Runnable onLayoutAction, @Nullable Runnable cancelAction)
     {
-        view.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
+        this.onLayoutCompleteAction = onLayoutAction;
+        this.onWaitCanceledAction = cancelAction;
+        this.anchorRef = new WeakReference<>(anchor);
+
+        if(ViewCompat.isLaidOut(anchor))
         {
-            @Override
-            public void onGlobalLayout()
+            setComplete();
+        }
+        else
+        {
+            anchor.getViewTreeObserver().addOnGlobalLayoutListener(this);
+        }
+    }
+
+    @NonNull
+    public static Cancellable waitLayout(@NonNull final View view, @NonNull final Runnable completeAction)
+    {
+        return waitLayout(view, completeAction, null);
+    }
+
+    @NonNull
+    public static Cancellable waitLayout(@NonNull final View view, @NonNull Runnable completeAction, @Nullable Runnable cancelAction)
+    {
+        return new LayoutWaiter(view, completeAction, cancelAction);
+    }
+
+    @Override
+    public void onGlobalLayout()
+    {
+        setComplete();
+    }
+
+    @Override
+    protected void cleanup()
+    {
+        super.cleanup();
+
+        View view = anchorRef.get();
+
+        if(view != null)
+        {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
             {
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-                {
-                    view.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                }
-                else
-                {
-                    view.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-                }
-
-                onLayoutAction.run();
+                view.getViewTreeObserver().removeOnGlobalLayoutListener(this);
             }
-        });
+            else
+            {
+                view.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+            }
+        }
+    }
+
+    @Override
+    protected void completeCleanup()
+    {
+        onLayoutCompleteAction.run();
+    }
+
+    @Override
+    protected void cancelCleanup()
+    {
+        if(onWaitCanceledAction != null)
+            onWaitCanceledAction.run();
     }
 }

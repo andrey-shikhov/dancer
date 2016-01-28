@@ -20,16 +20,21 @@ import android.support.annotation.NonNull;
 
 public class SimpleCancellable implements DependentCancellable
 {
-    boolean complete;
+    private boolean cancelled;
+
+    private Cancellable parent;
+
+    private boolean complete;
 
     @Override
-    public boolean isDone()
+    public final boolean isDone()
     {
         return complete;
     }
 
     protected void cancelCleanup()
     {
+
     }
 
     protected void cleanup()
@@ -42,8 +47,6 @@ public class SimpleCancellable implements DependentCancellable
 
     public boolean setComplete()
     {
-//        Log.get("dance.sfuture").a("setComplete").t(new Throwable()).w().r();
-
         synchronized (this)
         {
             if (cancelled)
@@ -52,7 +55,6 @@ public class SimpleCancellable implements DependentCancellable
             if (complete)
             {
                 // don't allow a Cancellable to complete twice...
-//                assert false;
                 return true;
             }
 
@@ -95,10 +97,6 @@ public class SimpleCancellable implements DependentCancellable
         return true;
     }
 
-    boolean cancelled;
-
-    private Cancellable parent;
-
     @Override
     public SimpleCancellable setParent(Cancellable parent)
     {
@@ -118,13 +116,6 @@ public class SimpleCancellable implements DependentCancellable
             return cancelled || (parent != null && parent.isCancelled());
         }
     }
-
-    public static final Cancellable COMPLETED = new SimpleCancellable()
-    {
-        {
-            setComplete();
-        }
-    };
 
     @NonNull
     public Cancellable reset()

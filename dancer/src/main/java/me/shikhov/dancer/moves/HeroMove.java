@@ -27,7 +27,7 @@ import com.nineoldandroids.view.ViewPropertyAnimator;
 
 import java.lang.ref.WeakReference;
 
-public class HeroMove extends Move
+public class HeroMove extends AbstractMove<HeroMove>
 {
     private WeakReference<View> fromViewRef;
     private WeakReference<View> toViewRef;
@@ -43,7 +43,7 @@ public class HeroMove extends Move
         super(simulation);
     }
 
-    public HeroMove(@NonNull Move parentMove, boolean simulation)
+    public HeroMove(@NonNull AbstractMove parentMove, boolean simulation)
     {
         super(parentMove, simulation);
         setDuration(500);

@@ -16,9 +16,6 @@
 
 package me.shikhov.dancer.future;
 
-/**
- * Created by andrew on 09.01.16.
- */
 public interface Future<T> extends Cancellable, java.util.concurrent.Future<T>
 {
     /**

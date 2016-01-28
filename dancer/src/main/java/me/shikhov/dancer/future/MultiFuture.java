@@ -16,18 +16,22 @@
 
 package me.shikhov.dancer.future;
 
+import android.support.annotation.NonNull;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class MultiFuture<T> extends SimpleFuture<T>
 {
-    ArrayList<FutureCallback<T>> callbacks;
+    private List<FutureCallback<T>> callbacks;
 
-    final FutureCallback<T> callback = new FutureCallback<T>()
+    private final FutureCallback<T> callback = new FutureCallback<T>()
     {
         @Override
         public void onCompleted(Exception e, T result)
         {
-            ArrayList<FutureCallback<T>> callbacks;
+
+            List<FutureCallback<T>> callbacks;
 
             synchronized (MultiFuture.this)
             {
@@ -46,7 +50,8 @@ public class MultiFuture<T> extends SimpleFuture<T>
     };
 
     @Override
-    public MultiFuture<T> setCallback(FutureCallback<T> callback)
+    @NonNull
+    public MultiFuture<T> setCallback(@NonNull FutureCallback<T> callback)
     {
         synchronized (this)
         {
