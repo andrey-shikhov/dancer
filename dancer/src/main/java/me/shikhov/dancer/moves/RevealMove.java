@@ -16,10 +16,21 @@
 
 package me.shikhov.dancer.moves;
 
-/**
- * Created by andrew on 08.01.16.
- */
-public class RevealMove
-{
+import android.graphics.Canvas;
+import android.graphics.Point;
+import android.support.annotation.NonNull;
 
+import me.shikhov.dancer.RevealContainer;
+
+public interface RevealMove extends CancellableMove<RevealMove>, ReversableMove<RevealMove>
+{
+    interface Clipper
+    {
+        void clip(@NonNull Canvas canvas, @NonNull Point startPoint, float fraction);
+    }
+
+    @NonNull
+    RevealMove container(@NonNull RevealContainer container);
+
+    RevealMove clipper(@NonNull Clipper clipper);
 }

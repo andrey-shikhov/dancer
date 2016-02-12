@@ -197,6 +197,6 @@ public class ShowMoveImpl extends AbstractMove<ShowMove> implements ShowMove
     @Override
     public ShowMove reverse()
     {
-        return null;
+        return this;
     }
 }

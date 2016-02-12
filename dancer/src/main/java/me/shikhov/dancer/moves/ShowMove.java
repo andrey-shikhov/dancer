@@ -14,6 +14,11 @@ public interface ShowMove extends CancellableMove<ShowMove>, ReversableMove<Show
     @NonNull
     ShowMove from(@Direction.Dir int direction);
 
+    /**
+     * Set
+     * @param alpha
+     * @return
+     */
     @NonNull
     ShowMove fromAlpha(float alpha);
 

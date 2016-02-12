@@ -22,6 +22,8 @@ import me.shikhov.dancer.moves.HeroMove;
 import me.shikhov.dancer.moves.LadderMove;
 import me.shikhov.dancer.moves.RevealMove;
 import me.shikhov.dancer.moves.ShowMove;
+import me.shikhov.dancer.moves.impl.HeroMoveImpl;
+import me.shikhov.dancer.moves.impl.RevealMoveImpl;
 import me.shikhov.dancer.moves.impl.ShowMoveImpl;
 
 public final class Dancer
@@ -36,7 +38,7 @@ public final class Dancer
     @NonNull
     public static HeroMove hero()
     {
-        return new HeroMove(simulateAnimations);
+        return new HeroMoveImpl(simulateAnimations);
     }
 
     @NonNull
@@ -48,7 +50,7 @@ public final class Dancer
     @NonNull
     public static RevealMove reveal()
     {
-        return new RevealMove();
+        return new RevealMoveImpl(simulateAnimations);
     }
 
     @NonNull

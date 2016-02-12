@@ -39,11 +39,6 @@ public class ChainedMove extends AbstractMove<ChainedMove>
         super(simulation);
     }
 
-    public ChainedMove(@NonNull AbstractMove parentMove, boolean simulation)
-    {
-        super(parentMove, simulation);
-    }
-
     @Override
     protected void execute()
     {
@@ -51,8 +46,9 @@ public class ChainedMove extends AbstractMove<ChainedMove>
     }
 
     @Override
-    protected void cancel()
+    public boolean cancel()
     {
 
+        return false;
     }
 }
