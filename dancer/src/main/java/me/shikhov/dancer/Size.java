@@ -20,6 +20,9 @@ import android.support.annotation.IntDef;
 import android.support.annotation.NonNull;
 import android.view.View;
 
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+
 /**
  * Structure to set some size: width/height/depth using absolute/relative values
  */
@@ -33,6 +36,7 @@ public final class Size
      * Possible values are: {@link #ABSOLUTE},{@link #SELF_RELATIVE},{@link #PARENT_RELATIVE}
      */
     @IntDef({ABSOLUTE, SELF_RELATIVE, PARENT_RELATIVE})
+    @Retention(RetentionPolicy.SOURCE)
     public @interface Type
     {
     }
@@ -45,6 +49,7 @@ public final class Size
      * Possible values are: {@link #DIM_WIDTH},{@link #DIM_HEIGHT}, {@link #DIM_DEPTH}
      */
     @IntDef({DIM_WIDTH, DIM_HEIGHT, DIM_DEPTH})
+    @Retention(RetentionPolicy.SOURCE)
     public @interface Dimension
     {
     }

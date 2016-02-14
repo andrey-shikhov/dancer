@@ -21,13 +21,17 @@ import android.graphics.Point;
 import android.support.annotation.NonNull;
 
 import me.shikhov.dancer.RevealContainer;
+import me.shikhov.dancer.moves.reveal.RectClipper;
 
 public interface RevealMove extends CancellableMove<RevealMove>, ReversableMove<RevealMove>
 {
     interface Clipper
     {
-        void clip(@NonNull Canvas canvas, @NonNull Point startPoint, float fraction);
+        void clip(@NonNull Canvas canvas, int containerWidth, int containerHeight, @NonNull Point startPoint, float fraction);
     }
+
+    @NonNull
+    Clipper DEFAULT_CLIPPER = new RectClipper();
 
     @NonNull
     RevealMove container(@NonNull RevealContainer container);

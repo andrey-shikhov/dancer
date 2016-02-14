@@ -26,13 +26,7 @@ import android.widget.ImageView;
 
 import com.koushikdutta.ion.Ion;
 
-import me.shikhov.dancer.Dancer;
-import me.shikhov.dancer.Direction;
-import me.shikhov.dancer.Size;
 
-/**
- * Created by andrew on 08.01.16.
- */
 public class SplashFragment extends Fragment
 {
 
@@ -49,13 +43,13 @@ public class SplashFragment extends Fragment
         View caption = Util.get(view, R.id.splash_caption);
         View subCaption = Util.get(view, R.id.splash_subcaption);
 
-        Dancer.show()
-                .view(caption)
-                .from(Direction.UP)
-                .distance(Size.HEIGHT)
-                .dance().setCallback((e, result) -> result.reverse().dance());
-
-        Dancer.show().view(subCaption).from(Direction.RIGHT).distance(Size.WIDTH).dance();
+//        Dancer.show()
+//                .view(caption)
+//                .from(Direction.UP)
+//                .distance(Size.HEIGHT)
+//                .dance().setCallback((e, result) -> result.reverse().dance());
+//
+//        Dancer.show().view(subCaption).from(Direction.RIGHT).distance(Size.WIDTH).dance();
 
         return view;
     }

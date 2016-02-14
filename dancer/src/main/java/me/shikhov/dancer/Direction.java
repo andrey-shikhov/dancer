@@ -18,6 +18,9 @@ package me.shikhov.dancer;
 
 import android.support.annotation.IntDef;
 
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+
 
 public class Direction
 {
@@ -27,6 +30,7 @@ public class Direction
     public static final int RIGHT = 8;
 
     @IntDef({UP,DOWN,LEFT,RIGHT})
+    @Retention(RetentionPolicy.SOURCE)
     public @interface Dir
     {
     }
