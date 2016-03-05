@@ -28,7 +28,7 @@ public interface ShowMove extends CancellableMove<ShowMove>, ReversableMove<Show
     ShowMove view(@NonNull View view);
 
     @NonNull
-    ShowMove from(@Direction.Dir int direction);
+    ShowMove from(@Direction int direction);
 
     /**
      * Set

@@ -42,7 +42,7 @@ public class ShowMoveImpl extends AbstractMove<ShowMove> implements ShowMove
 
     private ViewPropertyAnimator animator;
 
-    @Direction.Dir
+    @Direction
     private int sourcePosition = Direction.DOWN;
 
     private Size distance;
@@ -72,7 +72,7 @@ public class ShowMoveImpl extends AbstractMove<ShowMove> implements ShowMove
 
     @Override
     @NonNull
-    public ShowMoveImpl from(@Direction.Dir int direction)
+    public ShowMoveImpl from(@Direction int direction)
     {
         this.sourcePosition = direction;
 

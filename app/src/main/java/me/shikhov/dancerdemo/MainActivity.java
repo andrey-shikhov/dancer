@@ -45,8 +45,11 @@ public class MainActivity extends AppCompatActivity
 
         Log.get(TAG).event(this, "onResume").r();
 
+//        getSupportFragmentManager().beginTransaction()
+//                .add(R.id.frags_root, new SplashFragment(),"SPLASH").commit();
+
         getSupportFragmentManager().beginTransaction()
-                .add(R.id.frags_root, new SplashFragment(),"SPLASH").commit();
+                .add(R.id.frags_root, new ShowHideMoveFragment(),"SHOWHIDE").commit();
     }
 
     @Override

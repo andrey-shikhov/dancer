@@ -21,17 +21,12 @@ import android.support.annotation.IntDef;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
-
-public class Direction
+@IntDef({Direction.UP, Direction.DOWN, Direction.LEFT, Direction.RIGHT})
+@Retention(RetentionPolicy.SOURCE)
+public @interface Direction
 {
-    public static final int UP = 1;
-    public static final int DOWN = 2;
-    public static final int LEFT = 4;
-    public static final int RIGHT = 8;
-
-    @IntDef({UP,DOWN,LEFT,RIGHT})
-    @Retention(RetentionPolicy.SOURCE)
-    public @interface Dir
-    {
-    }
+    int UP = 1;
+    int DOWN = 2;
+    int LEFT = 4;
+    int RIGHT = 8;
 }

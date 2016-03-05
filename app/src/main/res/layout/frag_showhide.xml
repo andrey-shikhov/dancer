@@ -1,0 +1,196 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#00e5ff"
+                android:padding="8dp">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/showhide_container"
+            android:background="#283593"
+            android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right|bottom"
+                    android:text="CONTAINER"
+                    android:textColor="#f00"
+                    />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/showhide_item"
+                    android:text="ANIMATED OBJECT"
+                    />
+
+        </FrameLayout>
+
+
+        <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/showhide_container"
+                    android:orientation="vertical"
+                    android:layout_marginTop="8dp"
+                    android:id="@+id/showhide_dir_layout"
+                    android:background="@drawable/bg_white_rect">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Animation direction"
+                            android:padding="8dp"
+                            />
+
+                        <RadioGroup
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/showhide_dirgroup"
+                            android:orientation="vertical"
+                            android:padding="8dp">
+
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="LEFT"
+                                    android:textColor="#fff"
+                                    android:padding="8dp"
+                                    android:id="@+id/showhide_left"
+                                    />
+
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="RIGHT"
+                                    android:textColor="#fff"
+                                    android:padding="8dp"
+                                    android:id="@+id/showhide_right"
+                                    />
+
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="UP"
+                                    android:textColor="#fff"
+                                    android:padding="8dp"
+                                    android:id="@+id/showhide_up"
+                                    />
+
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="DOWN"
+                                    android:textColor="#fff"
+                                    android:padding="8dp"
+                                    android:id="@+id/showhide_down"
+                                    />
+                        </RadioGroup>
+
+                </LinearLayout>
+
+        <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_below="@id/showhide_container"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/bg_white_rect"
+                    android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="distance"
+                            android:padding="8dp"
+                            />
+
+                        <RadioGroup
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:id="@+id/showhide_distancegroup"
+                            android:padding="8dp">
+
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="100% width"
+                                    android:textColor="#fff"
+                                    android:padding="8dp"
+                                    android:id="@+id/showhide_w100"
+                                    />
+
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="100% height"
+                                    android:textColor="#fff"
+                                    android:padding="8dp"
+                                    android:id="@+id/showhide_h100"
+                                    />
+
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="100% parent width"
+                                    android:textColor="#fff"
+                                    android:padding="8dp"
+                                    android:id="@+id/showhide_pw100"
+                                    />
+
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="100% parent height"
+                                    android:textColor="#fff"
+                                    android:padding="8dp"
+                                    android:id="@+id/showhide_ph100"
+                                    />
+
+                        </RadioGroup>
+
+                </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@id/showhide_dir_layout"
+            android:background="@drawable/bg_white_rect"
+            android:padding="8dp"
+            android:layout_margin="8dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Alpha"
+                    />
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Use alpha during animation"
+                    android:textColor="#fff"
+                    />
+        </LinearLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="START SHOW"
+            android:id="@+id/showhide_show"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/showhide_hide"
+            android:text="START HIDE"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            />
+</RelativeLayout>
